@@ -83,8 +83,10 @@ class LSTM(nn.Module):
     def permute_hidden(self, hx, permutation):
         if permutation is None:
             return hx
-        h = apply_permutation(hx[0], permutation)
-        c = apply_permutation(hx[1], permutation)
+        """h = apply_permutation(hx[0], permutation)
+        c = apply_permutation(hx[1], permutation)"""
+        h = hx[0].index_select(1, permutation)
+        c = hx[1].index_select(1, permutation)
 
         return h, c
 
