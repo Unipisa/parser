@@ -248,8 +248,7 @@ class Parser():
         args.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         if os.path.exists(name_or_path):
-            torch.serialization.add_safe_globals([Config])
-            state = torch.load(name_or_path, weights_only=True)
+            state = torch.load(name_or_path, weights_only=False)
         else:
             url = select(name=name_or_path, lang=lang, **kwargs)
             if url is None:
