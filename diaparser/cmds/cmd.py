@@ -17,7 +17,6 @@ def parse(argparser):
     argparser.add_argument("--local_rank", type=int, default=-1, help='node rank for distributed training')
     argparser.add_argument('--quiet', '-q', dest='verbose', action='store_false',
                            help='suppress verbose logs')
-    argparser.add_argument("--epochs", default=5000, type=int, help="Number of epochs to be run during training.")
     args, unknown = argparser.parse_known_args()
     args, _ = argparser.parse_known_args(unknown, args)
     args = Config(**vars(args))
