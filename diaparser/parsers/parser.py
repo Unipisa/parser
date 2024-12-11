@@ -249,6 +249,7 @@ class Parser():
 
         if os.path.exists(name_or_path):
             state = torch.load(name_or_path, weights_only=True)
+            torch.serialization.add_safe_globals([Config])
         else:
             url = select(name=name_or_path, lang=lang, **kwargs)
             if url is None:
